@@ -49,7 +49,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode((screen_width + 1, screen_height + 1))
 
     # Define maze attributes
-    nx, ny = 20, 20
+    nx, ny = 10, 10
 
     # Create a new maze
     maze = Maze(nx, ny)
@@ -114,4 +114,4 @@ if __name__ == '__main__':
                 exit(0)
 
         # Sleep for a given time to display a nice animation
-        pygame.time.wait(10)
+        pygame.time.wait(50)
