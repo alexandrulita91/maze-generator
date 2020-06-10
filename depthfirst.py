@@ -53,7 +53,7 @@ if __name__ == '__main__':
     CELL_COLOR = (253, 231, 36)
 
     # Define maze attributes
-    nx, ny = 10, 10
+    nx, ny = 25, 25
 
     # Create a new maze
     maze = Maze(nx, ny)
@@ -118,4 +118,4 @@ if __name__ == '__main__':
                 exit(0)
 
         # Sleep for a given time to display a nice animation
-        pygame.time.wait(50)
+        pygame.time.wait(25)
