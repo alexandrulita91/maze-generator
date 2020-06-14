@@ -62,9 +62,13 @@ if __name__ == '__main__':
     cell_width = screen_width // nx
     cell_height = screen_height // ny
 
+    # Create a background
+    background = pygame.Surface(screen.get_size()).convert()
+    background.fill(PRIMARY_COLOR)
+
     # Create a layer for the game
     game_surface = pygame.Surface(screen.get_size()).convert_alpha()
-    game_surface.fill(PRIMARY_COLOR)
+    game_surface.fill((0, 0, 0, 0,))
 
     # Drawing the horizontal lines
     for y in range(ny + 1):
@@ -102,6 +106,7 @@ if __name__ == '__main__':
                 ms = 50
 
         # Update the screen
+        screen.blit(background, (0, 0))
         screen.blit(game_surface, (0, 0))
 
         # Render
