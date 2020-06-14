@@ -8,16 +8,33 @@ class Cell:
     wall_pairs = {'N': 'S', 'S': 'N', 'E': 'W', 'W': 'E'}
 
     def __init__(self, x, y):
-        """Initialize the cell at (x,y), surrounded by walls."""
+        """Initialize the cell at (x,y), surrounded by walls.
+
+        Args:
+            x (int): cell horizontal coordinate
+            y (int): cell vertical coordinate
+
+        """
         self.x, self.y = x, y
         self.walls = {'N': True, 'S': True, 'E': True, 'W': True}
 
     def has_all_walls(self):
-        """Check if cell have all the walls"""
+        """Check if cell have all the walls.
+
+        Returns:
+            bool: True if cell have all the walls, False otherwise.
+
+        """
         return all(self.walls.values())
 
     def break_wall(self, other, direction):
-        """Break down the wall between cells self and other."""
+        """Break down the wall between cells self and other.
+
+        Args:
+            other (str): cell object
+            direction (str): navigation direction (N,S,E,W)
+
+        """
         self.walls[direction] = False
         other.walls[Cell.wall_pairs[direction]] = False
 
@@ -27,16 +44,39 @@ class Maze:
     compass = {'N': (0, -1), 'S': (0, 1), 'E': (1, 0), 'W': (-1, 0)}
 
     def __init__(self, nx, ny):
-        """Initialize the maze grid, consists of nx x ny cells"""
+        """Initialize the maze grid, consists of nx x ny cells.
+
+        Args:
+            nx (int): number of horizontal cells
+            ny (int): number of vertical cells
+
+        """
         self.nx, self.ny = nx, ny
         self.maze_cells = [[Cell(x, y) for y in range(ny)] for x in range(nx)]
 
     def cell_at(self, x, y):
-        """Return the Cell object at (x,y)."""
+        """Get the Cell object at (x,y) coordinates.
+
+        Args:
+            x (int): cell horizontal coordinate
+            y (int): cell vertical coordinate
+
+        Returns:
+            Cell: Cell object at (x,y) coordinates.
+
+        """
         return self.maze_cells[x][y]
 
     def find_valid_neighbours(self, cell):
-        """Return a list of unvisited neighbours to cell."""
+        """Get a list of unvisited neighbours to cell.
+
+        Args:
+            cell (Cell): Cell object
+
+        Returns:
+            list: a list of unvisited neighbours
+
+        """
         neighbours = []
 
         for direction, (dx, dy) in Maze.compass.items():

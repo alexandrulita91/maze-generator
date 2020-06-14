@@ -9,7 +9,15 @@ from maze import Maze
 
 
 def paint_wall(x, y, direction, color=(0, 0, 255, 15)):
-    """Painting the wall between cells with a given color"""
+    """Painting the wall between cells with a given color
+
+    Args:
+        x (int): cell horizontal coordinate
+        y (int): cell vertical coordinate
+        direction (str): navigation direction (N,S,E,W)
+        color (tuple): an (RGB) triplet
+
+    """
     dx = x * cell_width
     dy = y * cell_height
 
@@ -30,7 +38,14 @@ def paint_wall(x, y, direction, color=(0, 0, 255, 15)):
 
 
 def draw_cell(x, y, color=(255, 255, 0)):
-    """Drawing the cell with a given color"""
+    """Drawing the cell with a given color
+
+    Args:
+        x (int): cell horizontal coordinate
+        y (int): cell vertical coordinate
+        color (tuple): an (RGB) triplet
+
+    """
     x0 = int(x * cell_width + 1)
     y0 = int(y * cell_height + 1)
     w0 = int(cell_width - 1)
