@@ -49,11 +49,11 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode((screen_width + 1, screen_height + 1))
 
     # Define the colors
-    LINE_COLOR = (61, 1, 84)
-    CELL_COLOR = (253, 231, 36)
+    PRIMARY_COLOR = (61, 1, 84)
+    SECONDARY_COLOR = (253, 231, 36)
 
     # Define maze attributes
-    nx, ny = 25, 25
+    nx, ny = 10, 10
 
     # Create a new maze
     maze = Maze(nx, ny)
@@ -62,21 +62,17 @@ if __name__ == '__main__':
     cell_width = screen_width // nx
     cell_height = screen_height // ny
 
-    # Create a background
-    background = pygame.Surface(screen.get_size()).convert()
-    background.fill(LINE_COLOR)
-
     # Create a layer for the game
     game_surface = pygame.Surface(screen.get_size()).convert_alpha()
-    game_surface.fill((0, 0, 0, 0,))
+    game_surface.fill(PRIMARY_COLOR)
 
     # Drawing the horizontal lines
     for y in range(ny + 1):
-        pygame.draw.line(game_surface, LINE_COLOR, (0, y * cell_height), (screen_width, y * cell_height))
+        pygame.draw.line(game_surface, PRIMARY_COLOR, (0, y * cell_height), (screen_width, y * cell_height))
 
     # Drawing the vertical lines
     for x in range(nx + 1):
-        pygame.draw.line(game_surface, LINE_COLOR, (x * cell_width, 0), (x * cell_width, screen_height))
+        pygame.draw.line(game_surface, PRIMARY_COLOR, (x * cell_width, 0), (x * cell_width, screen_height))
 
     # Choose the initial cell, mark it as visited and push it to the stack
     current_cell = maze.cell_at(random.randint(0, maze.nx - 1), random.randint(0, maze.ny - 1))
@@ -84,12 +80,13 @@ if __name__ == '__main__':
     num_cells_visited = 1
 
     while True:
+        ms = 0
         # If the stack is not empty
         if cell_stack:
             # Pop a cell from the stack and make it a current cell
             current_cell = cell_stack.pop()
             unvisited_neighbours = maze.find_valid_neighbours(current_cell)
-            draw_cell(current_cell.x, current_cell.y, CELL_COLOR)
+            draw_cell(current_cell.x, current_cell.y, SECONDARY_COLOR)
 
             # If the current cell has any neighbours which have not been visited
             if unvisited_neighbours:
@@ -99,13 +96,12 @@ if __name__ == '__main__':
                 wall_direction, next_cell = random.choice(unvisited_neighbours)
                 # Remove the wall between the current cell and the chosen cell
                 current_cell.break_wall(next_cell, wall_direction)
-                paint_wall(current_cell.x, current_cell.y, wall_direction, CELL_COLOR)
+                paint_wall(current_cell.x, current_cell.y, wall_direction, SECONDARY_COLOR)
                 # Mark the chosen cell as visited and push it to the stack
                 cell_stack.append(next_cell)
-                num_cells_visited += 1
+                ms = 50
 
         # Update the screen
-        screen.blit(background, (0, 0))
         screen.blit(game_surface, (0, 0))
 
         # Render
@@ -118,4 +114,4 @@ if __name__ == '__main__':
                 exit(0)
 
         # Sleep for a given time to display a nice animation
-        pygame.time.wait(25)
+        pygame.time.wait(ms)
