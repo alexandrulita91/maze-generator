@@ -9,7 +9,7 @@ from maze import Maze
 
 
 def paint_wall(x, y, direction, color=(0, 0, 255, 15)):
-    """Paint the wall between cells with a given color"""
+    """Painting the wall between cells with a given color"""
     dx = x * cell_width
     dy = y * cell_height
 
@@ -30,7 +30,7 @@ def paint_wall(x, y, direction, color=(0, 0, 255, 15)):
 
 
 def draw_cell(x, y, color=(255, 255, 0)):
-    """Draw the cell with a given color"""
+    """Drawing the cell with a given color"""
     x0 = int(x * cell_width + 1)
     y0 = int(y * cell_height + 1)
     w0 = int(cell_width - 1)
@@ -44,29 +44,29 @@ if __name__ == '__main__':
     pygame.init()
     pygame.display.set_caption("Maze generator - Depth-first search algorithm")
 
-    # Define display screen size
+    # Defining display screen size
     screen_width, screen_height = 500, 500
     screen = pygame.display.set_mode((screen_width + 1, screen_height + 1))
 
-    # Define the colors
+    # Colors palette
     PRIMARY_COLOR = (61, 1, 84)
     SECONDARY_COLOR = (253, 231, 36)
 
-    # Define maze attributes
+    # Defining maze attributes
     nx, ny = 10, 10
 
-    # Create a new maze
+    # Creating a new maze
     maze = Maze(nx, ny)
 
-    # Calculate cell size
+    # Calculating cell size
     cell_width = screen_width // nx
     cell_height = screen_height // ny
 
-    # Create a background
+    # Creating the background
     background = pygame.Surface(screen.get_size()).convert()
     background.fill(PRIMARY_COLOR)
 
-    # Create a layer for the game
+    # Creating the game layer
     game_surface = pygame.Surface(screen.get_size()).convert_alpha()
     game_surface.fill((0, 0, 0, 0,))
 
@@ -105,18 +105,18 @@ if __name__ == '__main__':
                 cell_stack.append(next_cell)
                 ms = 50
 
-        # Update the screen
+        # Updating the screen
         screen.blit(background, (0, 0))
         screen.blit(game_surface, (0, 0))
 
-        # Render
+        # Rendering
         pygame.display.flip()
 
-        # Handle any incoming event
+        # Handling any incoming event
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit(0)
 
-        # Sleep for a given time to display a nice animation
+        # Changing the FPS (frames per second)
         pygame.time.wait(ms)
