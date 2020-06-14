@@ -40,7 +40,7 @@ def draw_cell(x, y, color=(255, 255, 0)):
 
 
 if __name__ == '__main__':
-    # Initialize the game
+    # Initialize game
     pygame.init()
     pygame.display.set_caption("Maze generator - Depth-first search algorithm")
 
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     cell_width = screen_width // nx
     cell_height = screen_height // ny
 
-    # Creating the background
+    # Creating background
     background = pygame.Surface(screen.get_size()).convert()
     background.fill(PRIMARY_COLOR)
 
@@ -70,15 +70,15 @@ if __name__ == '__main__':
     game_surface = pygame.Surface(screen.get_size()).convert_alpha()
     game_surface.fill((0, 0, 0, 0,))
 
-    # Drawing the horizontal lines
+    # Drawing horizontal lines
     for y in range(ny + 1):
         pygame.draw.line(game_surface, PRIMARY_COLOR, (0, y * cell_height), (screen_width, y * cell_height))
 
-    # Drawing the vertical lines
+    # Drawing vertical lines
     for x in range(nx + 1):
         pygame.draw.line(game_surface, PRIMARY_COLOR, (x * cell_width, 0), (x * cell_width, screen_height))
 
-    # Choose the initial cell, mark it as visited and push it to the stack
+    # Choose initial cell, mark it as visited and push it to the stack
     current_cell = maze.cell_at(random.randint(0, maze.nx - 1), random.randint(0, maze.ny - 1))
     cell_stack = [current_cell]
     num_cells_visited = 1
@@ -105,7 +105,7 @@ if __name__ == '__main__':
                 cell_stack.append(next_cell)
                 ms = 50
 
-        # Updating the screen
+        # Updating screen
         screen.blit(background, (0, 0))
         screen.blit(game_surface, (0, 0))
 
@@ -118,5 +118,5 @@ if __name__ == '__main__':
                 pygame.quit()
                 exit(0)
 
-        # Changing the FPS (frames per second)
+        # Changing FPS (frames per second)
         pygame.time.wait(ms)
