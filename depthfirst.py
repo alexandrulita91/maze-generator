@@ -96,7 +96,6 @@ if __name__ == '__main__':
     # Choose initial cell, mark it as visited and push it to the stack
     current_cell = maze.cell_at(random.randint(0, maze.nx - 1), random.randint(0, maze.ny - 1))
     cell_stack = [current_cell]
-    num_cells_visited = 1
 
     while True:
         ms = 0
