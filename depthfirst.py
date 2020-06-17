@@ -57,7 +57,7 @@ def color_cell(x, y, color=(255, 255, 0)):
 if __name__ == '__main__':
     # Initializes game
     pygame.init()
-    pygame.display.set_caption("Maze generator - Depth-first search algorithm")
+    pygame.display.set_caption("Maze generator 2D - Depth-first search algorithm")
 
     # Defines display screen size
     screen_width, screen_height = 500, 500
