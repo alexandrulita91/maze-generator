@@ -58,8 +58,8 @@ class Maze:
         """Gets the cell object at (x,y) coordinates.
 
         Args:
-            x (int): cell horizontal coordinate
-            y (int): cell vertical coordinate
+            x (int): horizontal coordinate
+            y (int): vertical coordinate
 
         Returns:
             Cell: cell object at (x,y) coordinates.
@@ -71,7 +71,7 @@ class Maze:
         """Gets a list of unvisited neighbors to the cell.
 
         Args:
-            cell (Cell): Cell object
+            cell (Cell): cell object
 
         Returns:
             list: a list of unvisited neighbours
