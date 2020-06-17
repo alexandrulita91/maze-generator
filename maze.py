@@ -68,7 +68,7 @@ class Maze:
         return self.maze_cells[x][y]
 
     def find_valid_neighbours(self, cell):
-        """Gets a list of unvisited neighbours to cell.
+        """Gets a list of unvisited neighbors to the cell.
 
         Args:
             cell (Cell): Cell object
