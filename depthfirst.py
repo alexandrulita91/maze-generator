@@ -38,7 +38,7 @@ def color_wall(x, y, direction, color=(0, 0, 255, 15)):
 
 
 def color_cell(x, y, color=(255, 255, 0)):
-    """Colors the cell with a given color
+    """Colors the cell with a given color.
 
     Args:
         x (int): horizontal coordinate
