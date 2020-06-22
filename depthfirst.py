@@ -54,7 +54,7 @@ def color_cell(x, y, color=(255, 255, 0)):
     pygame.draw.rect(game_surface, color, (x0, y0, w0, h0))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Initializes game
     pygame.init()
     pygame.display.set_caption("Maze generator 2D - Depth-first search algorithm")
