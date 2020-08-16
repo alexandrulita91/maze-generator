@@ -26,3 +26,7 @@ Ensure that you can do the following before you run the maze generation:
 ## How to generate the maze
 You can generate the maze using the following command:
 - `pipenv run python depthfirst.py`
+
+## Improvement ideas
+- improve the code quality
+- remove unnecessary comments
